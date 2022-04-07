@@ -35,11 +35,11 @@ The configuration details of each machine may be found below.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| Web-1    |Web Server| 10.0.0.5   | Linux            |
-| Web-2    |Web Server| 10.0.0.6   | Linux            |
-| Web-3    |Monitoring| 10.0.0.7   | Linux            |
-| ELK      |Monitoring| 10.1.0.4   | Linux            |
+| Jump Box | Gateway  | 10.0.0.4   |Ubuntu LTS 18.04  |
+| Web-1    |Web Server| 10.0.0.5   |Ubuntu LTS 18.04  |
+| Web-2    |Web Server| 10.0.0.6   |Ubuntu LTS 18.04  |
+| Web-3    |Monitoring| 10.0.0.7   |Ubuntu LTS 18.04  |
+| ELK      |Monitoring| 10.1.0.4   |Ubuntu LTS 18.04  |
 
 ### Access Policies
 
@@ -49,6 +49,7 @@ Only the jump box machine can accept connections from the Internet. Access to th
 40.77.98.191
 
 Machines within the network can only be accessed by each other.
+
 Web-1 machine has access to the ELK machine using the following IP addresses: 51.13.73.153
 
 A summary of the access policies in place can be found in the table below.
