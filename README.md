@@ -38,7 +38,7 @@ The configuration details of each machine may be found below.
 | Jump Box | Gateway  | 10.0.0.4   |Ubuntu LTS 18.04  |
 | Web-1    |Web Server| 10.0.0.5   |Ubuntu LTS 18.04  |
 | Web-2    |Web Server| 10.0.0.6   |Ubuntu LTS 18.04  |
-| Web-3    |Monitoring| 10.0.0.7   |Ubuntu LTS 18.04  |
+| Web-3    |Web Server| 10.0.0.7   |Ubuntu LTS 18.04  |
 | ELK      |Monitoring| 10.1.0.4   |Ubuntu LTS 18.04  |
 
 ### Access Policies
@@ -48,9 +48,7 @@ The machines on the internal network are not exposed to the public Internet.
 Only the jump box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 40.77.98.191
 
-Machines within the network can only be accessed by each other.
-
-Web-1 machine has access to the ELK machine using the following IP addresses: 51.13.73.153
+Machines within the network can only be accessed by the docker containers I created within my jumpbox. The personal IP address to access the ELK machine is:  
 
 A summary of the access policies in place can be found in the table below.
 
@@ -62,13 +60,16 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because ansible is an automated tool that allows the user to configure provision, and manage application deployment on an infinite amount of machines. 
+
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Installs docker.io  
+- Installs pip3
+- Installs python module
+- Increases virtual memory 
+- Download and launch a docker elk container 
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
