@@ -2,41 +2,12 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](https://github.com/treycg13/treycg13/blob/master/diagrams/diagram.jpg)
+(https://github.com/treycg13/treycg13/blob/master/diagrams/diagram.jpg)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the filebeat-playbook.yml file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
----
-- name: installing and launching filebeat
-  hosts: webservers
-  become: yes
-  tasks:
-
-  - name: download filebeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
-
-  - name: install filebeat deb
-    command: dpkg -i filebeat-7.6.1-amd64.deb
-
-  - name: drop in filebeat.yml
-    copy:
-      src: /etc/ansible/filebeat-config.yml
-      dest: /etc/filebeat/filebeat.yml
-
-  - name: enable and configure system module
-    command: filebeat modules enable system
-
-  - name: setup filebeat
-    command: filebeat setup
-
-  - name: start filebeat service
-    command: service filebeat start
-
-  - name: enable service filebeat on boot
-    systemd:
-      name: filebeat
-      enabled: yes
-
+https://github.com/treycg13/treycg13/blob/master/ansible/filebeat-playbook.yml
+https://github.com/treycg13/treycg13/blob/master/ansible/metricbeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topologu
@@ -59,25 +30,25 @@ Filebeat detects changes to the filesystem. Specifically, we use it to collect A
 Metricbeat detects changes in system metrics, such as CPU usage. We use it to detect SSH login attempts, failed sudo escalations, and CPU/RAM statistics.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
 | Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| DVWA 1   |Web Server| 10.0.0.5   | Linux            |
-| DVWA 2   |Web Server| 10.0.0.6   | Linux            |
-| DVWA 3   |Monitoring| 10.0.0.7   | Linux            |
+| Web-1    |Web Server| 10.0.0.5   | Linux            |
+| Web-2    |Web Server| 10.0.0.6   | Linux            |
+| Web-3    |Monitoring| 10.0.0.7   | Linux            |
 | ELK      |Monitoring| 10.1.0.4   | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the jump box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+40.77.98.191
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by each other.
+Web-1 machine has access to the ELK machine using the following IP addresses: 51.13.73.153
 
 A summary of the access policies in place can be found in the table below.
 
